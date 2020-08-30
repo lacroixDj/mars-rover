@@ -5,7 +5,7 @@ const input = require('./lib/services/input');
 const output = require('./lib/services/output');
 
 // Custom lib for handling app robots logic
-//const process = require('./lib/process');
+const controller = require('./lib/services/controller');
 
 /**
  * Starting point of the javascript program, 
@@ -17,7 +17,9 @@ const output = require('./lib/services/output');
 const main = () => {
     
     input.readInput()
-        
+
+        .then( instructions_data => controller.setUp(instructions_data))
+
         .then( robots_output => output.printOutput(robots_output))
         
         .catch(error => output.printError(error));
