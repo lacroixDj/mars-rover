@@ -18,7 +18,7 @@ const main = () => {
     
     input.readInput()
 
-        .then( instructions_data => controller.setUp(instructions_data))
+        .then( instructions_data => controller.setUpAndRun(instructions_data))
 
         .then( robots_output => output.printOutput(robots_output))
         
