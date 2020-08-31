@@ -6,6 +6,9 @@ LABEL maintainer 'Frank Lacroix <lacroixDj@gmail.com>'
 # Create app directory
 WORKDIR /home/node/app
 
+# Installing pm2 globally
+RUN npm install pm2@latest -g
+
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
