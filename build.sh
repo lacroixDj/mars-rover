@@ -24,7 +24,7 @@ docker ps | grep martian-robots
 echo
 
 echo "--> Runing tests: docker exec martian-robots npm test "
-docker exec --it martian-robots npm test
+docker exec -it martian-robots npm test
 echo
 
 echo "--> /End."
