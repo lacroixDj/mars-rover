@@ -21,4 +21,5 @@ COPY . .
 
 
 # Starting daemonized app
-CMD [ "npm", "run", "pm2" ]
+# CMD [ "npm", "run", "pm2" ]
+CMD [ "npm", "start"]
