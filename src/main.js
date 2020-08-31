@@ -1,11 +1,11 @@
 // Custom lib for handling input options / vavlues
-const input = require('./lib/services/input');
+const input = require('./services/input');
 
 // Custom lib for handling / print app ouput and errors
-const output = require('./lib/services/output');
+const output = require('./services/output');
 
 // Custom lib for handling app robots logic
-const controller = require('./lib/services/controller');
+const controller = require('./services/controller');
 
 /**
  * Starting point of the javascript program, 
