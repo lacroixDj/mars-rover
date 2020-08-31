@@ -2,10 +2,10 @@
 
 /** 
  * This is the CLI application entry point, 
- * it calls main() function defined in main.js 
+ * it calls main() function defined in ./src/main.js 
  * 
  * @author Frank Lacroix <lacroixdj@gmail.com.com>
 */
-const main = require('./main.js');
+const main = require('./src/main');
 
 main();
