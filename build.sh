@@ -16,7 +16,7 @@ docker build -t lacroixdj/martian-robots:1.0 -t lacroixdj/martian-robots:latest 
 echo
 
 echo "--> Running the container in detached mode:  docker run --name martian-robots -d lacroixdj/martian-robots:latest"
-docker run --name martian-robots -d lacroixdj/martian-robots:latest
+docker run --name martian-robots -d  --restart always lacroixdj/martian-robots:latest
 echo
 
 echo "--> Runing tests: docker exec martian-robots npm test "
