@@ -6,8 +6,8 @@ LABEL maintainer 'Frank Lacroix <lacroixDj@gmail.com>'
 # Create app directory
 WORKDIR /home/node/app
 
-# Installing pm2 globally
-RUN npm install pm2@latest -g
+# Installing forever
+RUN npm install forever -g
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -20,4 +20,4 @@ RUN npm install
 COPY . .
 
 # Starting daemonized app
-CMD [ "pm2", "start", "martian-robots" ]
+CMD [ "forever", "start", "martian-robots" ]
