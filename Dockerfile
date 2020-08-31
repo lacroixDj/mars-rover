@@ -16,5 +16,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# running tests
-CMD [ "npm", "test" ]
+# Starting daemonized app
+CMD [ "pm2", "start", "martian-robots" ]

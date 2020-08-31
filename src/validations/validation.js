@@ -32,7 +32,7 @@ class Validation {
         this._rules_regex = {
 
             // (e.g): 5 3
-            grid_max_coordinates: /^\d{1,2}\s{1,2}\d$/m,
+            grid_max_coordinates: /^\d{1,2}\s\d{1,2}$/m,
 
             // (e.g): 1 1 E
             initial_positions: /^\d{1,2}\s\d{1,2}\s[NSEW]$/m,
