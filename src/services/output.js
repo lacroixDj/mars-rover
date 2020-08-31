@@ -4,13 +4,17 @@ const _ = require('lodash');
 // Lib for colorizing output
 const chalk = require('chalk');
 
+// Libs for fan
+var figlet = require('figlet');
+
 // Require global configuration constants
 const CONF = require('../config/constants');
-
 
 // Error messages dictionary lib
 const error_messages = require('../validations/error_messages');
 
+// Help messages 
+const { app_ascii_banner, help_message, input_prompt_message } = require('../validations/help_messages');
 
 /**
  * This class handles and centralizes aplication std output and std error 
@@ -28,29 +32,23 @@ class Output {
      * @param   {object}  output object 
      * @returns {Promise} Resolve the promise if everything is ok, otherwise rejects
     */    
-    printOutput(output) {
+    printOutput({ robots_output, cli_loop }) {
 
         try {
 
-            if (_.isEmpty(output))  throw new Error(error_messages.empty_output); 
+            if (_.isEmpty(robots_output))  throw new Error(error_messages.empty_output); 
             
-            if (typeof(output) == 'string') 
+            if (typeof(robots_output) == 'string') 
             
-                console.log(chalk.green(output));
+                console.log(chalk.green(robots_output));
             
-            else if (Array.isArray(output)) 
+            else if (Array.isArray(robots_output)) 
             
-                output.forEach( line => console.log(chalk.green(line)) );
+                robots_output.forEach( line => console.log(chalk.green(line)));
 
-            else if (typeof(output) == 'object') 
-            
-                console.log(chalk.green(JSON.stringify(output)));
-            
-            else 
-            
-                throw new Error(error_messages.invalid_output_type);
+            else throw new Error(error_messages.invalid_output_type);
 
-            return Promise.resolve(this._output);
+            return Promise.resolve(cli_loop);
                             
         } catch (error) {
 
@@ -75,6 +73,34 @@ class Output {
         if(CONF.ERROR_REPORTING >=2 ) console.log(chalk.red(`Stack trace: ${error.stack}`));
     }
     //---------------------------------------------------------------------
+
+
+    /**  
+     * 
+     * Prints usage / help instructions message 
+     * 
+    */    
+    printHelpInstructions(){
+        console.log(chalk.yellow('________________________________________________________________________________'))
+        console.log(chalk.yellow(figlet.textSync(app_ascii_banner, {font: 'Slant',  width: 80 })));
+        console.log(chalk.blue(help_message));
+    }
+    //-------------------------------------------------------------------------
+
+
+    /**  
+     * 
+     * Prints imput prompt message indicator
+     * 
+    */    
+    printInputPromt(){
+        console.log(chalk.black.bgYellow(input_prompt_message));
+    }
+    //-------------------------------------------------------------------------
+
+
+
+
 }
 // End class.
 

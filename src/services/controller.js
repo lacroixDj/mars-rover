@@ -61,13 +61,15 @@ class Controller {
      * for building Robots many times as necesary based on the input instructions
      * 
     */
-    setUpAndRun(instructions_data) {
+    setUpAndRun({ instructions_data, cli_loop }) {
 
         try {
             
             // Validates the input setup
             if(_.isEmpty(instructions_data)) throw new Error(error_messages.empty_instructions_setup);
-                
+            
+            //Clean bufered
+            
             // Build instructions data object
             this._instructions = new Instructions(instructions_data);
 
@@ -84,7 +86,7 @@ class Controller {
             this.startRobotsAutopilot();
             
             //return this.buildGrid(args)
-            return Promise.resolve(this._output); 
+            return Promise.resolve({ robots_output: this._output, cli_loop }); 
         
         } catch (error) {
 
@@ -111,6 +113,9 @@ class Controller {
         // The number of command lines must be consistent and equal to the number of robots we want to build
         if(initial_positions.length != commands.length ) throw new Error(error_messages.invalid_positions_commands_lenght);
 
+        // clean the bots collection first
+        this._robots = [];
+        
         // if everything went well then we can build our robots
         // We are goint to use a for loop which is faster than any other loops methods
         for(let i = 0; i < initial_positions.length; i++){
@@ -139,6 +144,9 @@ class Controller {
         // There should be at least one robot in the collection
         if(_.isEmpty(this._robots) || !this._robots.length)  throw new Error(error_messages.empty_bots_collection);
         
+        // clean the output collection
+        this._output = [];
+
         // We are goint to use a for loop which is faster than any other loops methods
         for(let i = 0; i < this._robots.length; i++){
             

@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 const CONF = require('../config/constants');
 
 // Grid model 
-const Grid = require('../models/grid');
+const Grid = require('./grid');
 
 // Error messages dictionary lib
 const error_messages = require('../validations/error_messages');

@@ -7,6 +7,9 @@ const readline = require('readline');
 // Lodash is a general utils js lib
 const _ = require('lodash');
 
+// Custom lib for print  ouput 
+const output = require('./output');
+
 // Minimist is a CLI arguments reader utils lib
 const minimist = require('minimist');
 
@@ -55,7 +58,7 @@ class Input {
      * @throws error  message to the console 
      
     */
-    readInput() {
+    readInput(cli_loop) {
 
         try {
             
@@ -63,22 +66,30 @@ class Input {
             const args = _.omit(minimist(process.argv.slice(2), argv_options), '_');
 
             // Using TTY Console input
-            if(_.isEmpty(args))  
+            if(_.isEmpty(args))  {
+
+                cli_loop++;
+
+                return this.readInputFromCLI(cli_loop)
             
-                return this.readInputFromCLI()
-            
-                .then( instructions_data => { return Promise.resolve(instructions_data) })
+                    .then( instructions_data => { return Promise.resolve({ instructions_data,  cli_loop })})  
                 
-                .catch(error => { return Promise.reject(error) });
+                    .catch(error => { return Promise.reject(error) });
+            } 
             
-            else 
-            
+            // Read input from file 
+            else {
+
+                // disable cli_lopp in batch file mode
+                cli_loop = 0;
+
                 return this.readInputFromFile(args)
                 
-                .then( instructions_data => { return Promise.resolve(instructions_data) })
+                .then( instructions_data => { return Promise.resolve({ instructions_data, cli_loop })})
                 
                 .catch(error => { return Promise.reject(error) });
-            
+            } 
+
         } catch (error) {
 
             // Send the errors and break the chain
@@ -96,13 +107,22 @@ class Input {
      * @throws error  message to the console 
      
     */
-    readInputFromCLI() {
+    readInputFromCLI(cli_loop) {
 
         return new Promise(
             
             async (resolve, reject) => {
                 
                 try {
+
+                    // Prints the app banner and instructions only the first time
+                    if(cli_loop == 1) output.printHelpInstructions();
+
+                    // Prints the input prompt indicator
+                    output.printInputPromt();
+
+                    // Lets clean the object DTO
+                    this._instructions.clean();
 
                     let line_number = 0;
             
@@ -111,10 +131,10 @@ class Input {
                         input: process.stdin,
                 
                         output: process.stdout,
-                
+
                         terminal: false 
                     });
-
+                    
                     // On close read stream then validate input data length and resolver
                     rl.on('close', () => {
 
@@ -164,9 +184,8 @@ class Input {
         )
     }
     //-------------------------------------------------------------------------
-
     
-
+    
     /**  
      * This method controls the flow from read input instrctions from file
      *  It also calls file input validations methods.

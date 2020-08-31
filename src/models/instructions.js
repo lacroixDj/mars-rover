@@ -23,6 +23,26 @@ class Instructions {
         // Validated robot instructions array
         this.commands = commands  || [];
     }
+    //-------------------------------------------------------------------------
+    
+
+    /**  
+     *  
+     *  This method cleas the collections
+     *  and set the instance object to its initial state
+     *
+    */
+    clean() {
+
+        this.grid_size_x =  0;
+
+        this.grid_size_y = 0;
+
+        this.initial_positions = [];
+        
+        this.commands = [];
+    }
+    //-------------------------------------------------------------------------
 }
 // End class
 

@@ -16,13 +16,20 @@ const controller = require('./services/controller');
  */
 const main = () => {
     
-    input.readInput()
+    const run = (cli_loop = 0) => { 
+       
+        input.readInput(cli_loop)
 
-        .then( instructions_data => controller.setUpAndRun(instructions_data))
+            .then(({ instructions_data, cli_loop }) => controller.setUpAndRun({ instructions_data, cli_loop }))
 
-        .then( robots_output => output.printOutput(robots_output))
+            .then(({ robots_output, cli_loop }) => output.printOutput({ robots_output, cli_loop }))
+
+            .then( cli_loop => { if( cli_loop > 0 ) run(cli_loop) })
         
-        .catch(error => output.printError(error));
+            .catch(error => output.printError(error))
+    }
+
+    run();
 }
 
 // Exporting the class instance
