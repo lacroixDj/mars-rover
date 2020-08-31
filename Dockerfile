@@ -21,4 +21,4 @@ COPY . .
 
 
 # Starting daemonized app
-CMD [ "nohup", "pm2", "start", 'npm', '--', 'start' ]
+CMD [ "npm", "run", "pm2" ]

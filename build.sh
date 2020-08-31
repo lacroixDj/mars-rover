@@ -15,8 +15,8 @@ echo "--> Building the container image: docker build -t lacroixdj/martian-robots
 docker build -t lacroixdj/martian-robots:1.0 -t lacroixdj/martian-robots:latest .
 echo
 
-echo "--> Running the container in detached mode:  docker run --name martian-robots -d lacroixdj/martian-robots:latest"
-docker run --name martian-robots lacroixdj/martian-robots:latest
+echo "--> Running the container in interactive mode:  docker run -it --name martian-robots lacroixdj/martian-robots:latest"
+docker run -it --name martian-robots lacroixdj/martian-robots:latest
 # echo
 
 # echo "--> Runing tests: docker exec martian-robots npm test "
