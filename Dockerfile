@@ -3,9 +3,6 @@ FROM node:lts
 
 LABEL maintainer 'Frank Lacroix <lacroixDj@gmail.com>'
 
-# node user
-USER node
-
 # Create app directory
 WORKDIR /home/node/app
 
@@ -17,7 +14,7 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY --chown=node:node . .
+COPY . .
 
 # running tests
 CMD [ "npm", "test" ]
