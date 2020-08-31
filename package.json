@@ -1,12 +1,21 @@
 {
   "name": "martian_robots",
   "version": "1.0.0",
-  "description": "Martian Robots navigation instructions for GuideSmiths test",
+  "description": "Martian Robots navigation over grid",
   "scripts": {
+    "start": "node martian-robots",
     "test": "mocha"
   },
+  "bin": {
+    "name": "martian-robots",
+    "bin": "martian-robots"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lacroixDj/martian-robots.git"
+  },
   "author": "lacroixdj@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.0",
     "lodash": "^4.17.20",
