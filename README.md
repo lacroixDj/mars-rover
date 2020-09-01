@@ -1,8 +1,10 @@
-# MARTIAN - ROBOTS! 
+# martian-robots
 
 ![welcome screen](assets/martIan-robots-welcome.png)
 
 This README.md file shows step by step how to install and run **martian-robots** CLI app.
+
+**martian-robots** is the solution to this code-challenge: https://github.com/guidesmiths/interview-code-challenges/blob/master/node/martian-robots/instructions.md
 
 ## Stack:
 
