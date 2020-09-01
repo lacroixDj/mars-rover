@@ -333,11 +333,10 @@ class Robot {
 
             // This flag could be changed in a previous iteration
             if(this._lost) return;
-
+            
+            // Moving the robot without actually move it, We first create a 'Ghost' from the current robot
             let ghost = this.runCommand(arr_commands[i]);
             
-                
-
             // Check if a previous robot has market its "scent" in this current point
             let isLostPoint = grid.checkIfLostPoint(this._position_x, this._position_y);
 
