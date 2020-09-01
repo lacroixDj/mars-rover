@@ -37,8 +37,8 @@ If you have already the docker environment installed and running, and also you h
 
 ### Docker Option 1: ./build.sh
 
-To make the things easier, a build.sh bash script has been included in the code.
-You only have to running as a user with enough priviledges, and this script will make the hard work for you.
+To make the things easier, a **build.sh** bash script has been included in the code.
+You only have to run it as a user with enough privileges, and this script will make the hard work for you.
 
 ```
 # sudo chmod +x ./build.sh
@@ -52,7 +52,7 @@ You should start to see messages like this:
 
 --> Running the container in interactive mode:  docker run -it --name martian-robots lacroixdj/martian-robots:latest 
 ```
-**Note:** If you start to see some errors during the process but finally the image is built and the container is running, just ignore them. That's because in order to rebuild an re-create a new container  the build.sh script tries to delete any previously created image / container, but if it doesn't exist then docker will throw an error message. This is not serious and wont break the build process.
+**Note:** If you start to see some errors during the process but finally the image is built and the container is running, just ignore them. That's because in order to rebuild an re-create a new container  the build.sh script tries to delete any previously created image / container, but if it doesn't exist then docker will throw an error message. This is not serious and won't break the build process.
 
 Ok, just wait until the build process get completed.
 Once the image build has been completed, the containers will run in interactive (-it) mode.
@@ -79,13 +79,13 @@ Once the image has been built, lets run our new container:
 > docker run -it --name martian-robots lacroixdj/martian-robots:latest
 ```
 
-if everything went well so far, you should see an output similar to the top banner image in this repo.!  
+if everything went well so far, you should see an output similar to the top banner image in this repo!  
 
 ### Re-running your container after exiting / quiting 
 
-It's normal for docker to stop running containers when the main process is closed or killed. Luckily, we can re-ignite our container in a simple way as many times as we want
+It's normal for docker to stop running containers when the main process is closed or killed. Luckily, we can restart our container in a simple way as many times as we want
 
-First lets re-start our container:
+First lets restart our container:
 
 ```
 > sudo docker start martian-robots
@@ -140,20 +140,22 @@ The program will validate if the input commands comply with the proper format, o
 - ./martian-robots --file ./test/data/2-sample.input.txt
 - node martian-robots -f ./test/data/3-sample.input.txt
 
-In addition to validating each command line of the file, similar as the previous method. It is also responsible for validating the existence of the file, if you have permissions to read it and validate that it is of type text / plain
+In addition to validating each command line of the file, similar as the previous method. It is also responsible for validating the existence of the file, if you have permissions to read it and also validates if file mimetype is equal text / plain (only plain text files are supported)
 
-3. **showing the help and use instructions**: Showing the help and instructions of the application. It is achieved by passing -h | --help when we invoke it.
+3. **showing the help and instructions**: Showing the help / instructions of the application. It is achieved by passing -h | --help when we invoke the app:
 - ./martian-robots -h
 - ./martian-robots --help 
 
 # Testing
 
-If you want to create  new tests, just put files in ./test/data/ with the following format:
+If you want to add more tests cases, just put files in ./test/data/ with the following format:
+
+Test are excuted in batch mode using the option -f | --file passing entire inputs described in input.txt files.
 
 <name>.input.txt: This file will be the input.
-<name>.output.txt: The resulting output will be validated against this output file. just be sure both files keep the same prefix name.
-
-Test are excuted in batch mode using the option -f | --file passing entire inputs described in files.
+<name>.output.txt: This file will represent the according output for the input file of the same name.
+  
+The resulting (returned) output will be validated against the .output.txt files (just be sure both files keep the same prefix name).
 
 ## Running tests with the container mode  
 
