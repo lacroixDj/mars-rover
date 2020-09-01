@@ -12,18 +12,19 @@ const exec = promisify(require("child_process").exec);
 
 const samples_dir = 'test/data';
 
+const rn2n =  /\r\n/g;
+
+const ltrim =  /^(?:"|'|\s|\0)+/i;
+
+const rtrim =  /(?:"|'|\s|\0)+$/i;
+
 
 // Test several inputs instructions sample data files
 // The input will be validated against an output with the same file name.
 // test/data/filename.input.txt == test/data/filename.output.txt. 
-describe('Testing data files samples', function () {
+describe('Testing robots data in batch with input files', function () {
     
-    const rn2n =  /\r\n/g;
-    
-    const ltrim =  /^(?:"|'|\s|\0)+/i;
-    
-    const rtrim =  /(?:"|'|\s|\0)+$/i;
-    
+     
     const files = fs.readdirSync(samples_dir);
     
     const input_files = files.filter(filename => filename.endsWith('.input.txt'));
@@ -31,7 +32,7 @@ describe('Testing data files samples', function () {
 
     for (const filename of input_files) {
         
-        it(`Should print the correct output for ${filename}`, async () => {
+        it(`All robots in each input file should match the expected output in its corresponding output file - ${filename}`, async () => {
             
             let input_file_path = path.join(samples_dir, filename);
 
