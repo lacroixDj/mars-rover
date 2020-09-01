@@ -292,6 +292,11 @@ The same applies in reverse, if turning 90º from North to -> East we will rotat
                       |
                   S = 4 = 0100  
 ``` 
+For more details you can take a look to:
+
+- Constants defined in **./src/config/constants.js**
+- Robot.rotateLeft() and  **Robot.rotateRight()** methods implemented in **src/models/robot.js**
+
 
 ## Contact: 
 
