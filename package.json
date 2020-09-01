@@ -1,9 +1,8 @@
 {
   "name": "martian_robots",
   "version": "1.0.0",
-  "description": "Martian Robots navigation over grid",
+  "description": "Martian Robots navigation",
   "scripts": {
-    "pm2": "pm2 start martian-robots",
     "start": "node martian-robots",
     "test": "mocha"
   },
