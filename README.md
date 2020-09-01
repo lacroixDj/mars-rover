@@ -2,7 +2,7 @@
 
 ![welcome screen](assets/martIan-robots-welcome.png)
 
-This README.md file shows step by step how to install and run **Martian-Robots** CLI app.
+This README.md file shows step by step how to install and run **martian-robots** CLI app.
 
 ## Stack:
 
