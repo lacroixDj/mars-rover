@@ -1,6 +1,9 @@
 // Require filesystem utils
 const fs = require('fs');
 
+// native process lib
+const process = require('process');
+
 // Requirie readline module, it helps to read line by line
 const readline = require('readline');
 
@@ -75,14 +78,21 @@ class Input {
                     .then( instructions_data => { return Promise.resolve({ instructions_data,  cli_loop })})  
                 
                     .catch(error => { return Promise.reject(error) });
-            } 
             
-            // Read input from file 
-            else {
+            } else if(!_.isNil(args['h'])) {
 
+                    // prints help instructions
+                    output.printHelpInstructions();
+
+                    // exit gracefully
+                    process.exit(0);
+            
+            } else {
+                
                 // disable cli_lopp in batch file mode
                 cli_loop = 0;
-
+                
+                // Read input from file 
                 return this.readInputFromFile(args)
                 
                 .then( instructions_data => { return Promise.resolve({ instructions_data, cli_loop })})

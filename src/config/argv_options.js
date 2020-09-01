@@ -9,9 +9,9 @@ const Error_messages = require('../validations/error_messages');
 */
 const argv_options = {
             
-    string: ['file'],
-    
-    alias: { f:'file' },
+    string: ['file', 'help' ],
+
+    alias: { f:'file', h:'help' },
 
     unknown: () => { throw new Error(Error_messages.invalid_option) }
 };
