@@ -17,18 +17,3 @@ echo
 
 echo "--> Running the container in interactive mode:  docker run -it --name martian-robots lacroixdj/martian-robots:latest"
 docker run -it --name martian-robots lacroixdj/martian-robots:latest
-# echo
-
-# echo "--> Runing tests: docker exec martian-robots npm test "
-# docker exec -d martian-robots npm test
-# echo
-
-# echo "--> Inspecting logs output: docker logs martian-robots "
-# docker logs martian-robots
-# echo
-
-# echo "--> Verifying the container is actually running: docker ps | grep martian-robots "
-# docker ps | grep martian-robots
-#echo
-
-# echo "--> /End."

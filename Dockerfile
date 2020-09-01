@@ -19,7 +19,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-
-# Starting daemonized app
-# CMD [ "npm", "run", "pm2" ]
+# Initial command
 CMD [ "npm", "start"]
