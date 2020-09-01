@@ -28,7 +28,7 @@ class Instructions {
 
     /**  
      *  
-     *  This method cleas the collections
+     *  This method cleans the collections
      *  and set the instance object to its initial state
      *
     */
