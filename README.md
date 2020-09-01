@@ -154,8 +154,8 @@ If you want to add more tests cases, just put files in ./test/data/ with the fol
 
 Test are excuted in batch mode using the option -f | --file passing entire inputs described in input.txt files.
 
-<name>.input.txt: This file will be the input.
-<name>.output.txt: This file will represent the according output for the input file of the same name.
+- <name>.input.txt: This file will be the input.
+- <name>.output.txt: This file will represent the according output for the input file of the same name.
   
 The resulting (returned) output will be validated against the .output.txt files (just be sure both files keep the same prefix name).
 
